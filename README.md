@@ -115,7 +115,9 @@ This project is deployed using GitHub Pages. You can view the live application [
 ## Contact
 
 **My Name** - Elijah Adebayo
+
 **Email** - olusegunvicky121@gmail.com
+
 **Lushegtech** - [GitHub Profile](https://github.com/Lushegtech)
 
 Project Link: [https://github.com/Lushegtech/vanilla-ticktacktoe](https://github.com/Lushegtech/vanilla-ticktacktoe)
