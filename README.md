@@ -1,59 +1,127 @@
-# Tic Tac Toe
+# Vanilla Tic Tac Toe
 
-A simple, clean tic-tac-toe game built with vanilla HTML, CSS, and JavaScript.
+A clean, minimalistic tic-tac-toe game built with vanilla HTML, CSS, and JavaScript. Features smart AI opponent and responsive design.
+
+![Tic Tac Toe Game Screenshot](./assets/screenshot.png)
+
+## Table of Contents
+
+- [Description](#description)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Game Modes](#game-modes)
+- [Deployment](#deployment)
+- [Contact](#contact)
+
+## Description
+
+This project is a classic tic-tac-toe game that demonstrates clean, hand-coded web development practices. The application features a smart AI opponent, score tracking across multiple rounds, and a responsive design that works on all devices. Built without any frameworks or build tools - just pure web technologies.
 
 ## Features
 
-- Play against computer or a friend
-- Smart AI opponent (tries to win, block, take center, then corners)
-- Score tracking across multiple rounds
-- Undo moves
-- Responsive design for mobile
+- **Two Game Modes**: Play against a smart computer AI or challenge a friend locally
+- **Intelligent AI**: Computer opponent uses strategic gameplay (win → block → center → corners)
+- **Score Tracking**: Keep track of wins, losses, and draws across multiple rounds
+- **Undo Functionality**: Take back moves if you make a mistake
+- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
+- **Clean UI**: Minimalistic, hand-coded design with subtle hover effects
+- **Round System**: Play multiple rounds and track overall performance
 
-## How to Play
+## Technologies Used
 
-1. Choose your game mode (vs Computer or vs Friend)
-2. Click on any empty cell to place your mark
-3. First player to get 3 in a row wins
-4. Use the Undo button to take back moves
-5. Reset to start over or continue to next round
+- **HTML** - Semantic markup and structure
+- **CSS** - Hand-coded styling with CSS Grid and Flexbox
+- **JavaScript (Vanilla)** - Game logic, AI implementation, and DOM manipulation
 
-## Demo
+## Getting Started
 
-[Live Demo](https://yourusername.github.io/tic-tac-toe)
+To get a local copy up and running follow these simple steps:
 
-## Installation
+### Prerequisites
 
-Just clone and open `index.html` in your browser:
+You need a modern web browser to run this application.
 
-```bash
-git clone https://github.com/yourusername/tic-tac-toe.git
-cd tic-tac-toe
-open index.html
-```
+### Installation
 
-Or serve it locally:
+1. Clone the repo
+   ```bash
+   git clone https://github.com/Lushegtech/vanilla-ticktacktoe.git
+   ```
 
-```bash
-python -m http.server 8000
-# Then visit http://localhost:8000
-```
+2. Navigate to the project directory
+   ```bash
+   cd vanilla-ticktacktoe
+   ```
 
-## Files
+3. Open the `index.html` file in your web browser, or serve it locally:
+   ```bash
+   python -m http.server 8000
+   # Then visit http://localhost:8000
+   ```
 
-- `index.html` - Main HTML structure
-- `style.css` - Styling and layout
-- `index.js` - Game logic and AI
-- `assets/favicon.svg` - Site icon
+## Usage
 
-## Browser Support
+### Starting a Game
 
-Works in all modern browsers. Uses CSS Grid for the game board.
+1. **Select Game Mode**: 
+   - Choose "vs Computer" to play against the AI
+   - Choose "vs Friend" for local two-player mode
 
-## License
+2. **Make Your Move**:
+   - Click on any empty cell to place your mark (X or O)
+   - The game alternates between players automatically
 
-MIT License - feel free to use this code however you want.
+3. **Game Controls**:
+   - **Undo**: Take back the last move
+   - **Reset**: Start a fresh game
+   - **Next Round**: Continue to the next round after a game ends
+
+### Game Modes
+
+#### vs Computer
+- You play as X, computer plays as O
+- AI uses strategic decision making:
+  1. Try to win if possible
+  2. Block player from winning
+  3. Take center position
+  4. Take corner positions
+  5. Take any remaining position
+
+#### vs Friend
+- Two players take turns on the same device
+- X always goes first
+- Perfect for local multiplayer gaming
+
+### Scoring System
+
+- Track wins for X, O, and draws
+- Scores persist across multiple rounds
+- Reset scores by refreshing the page
+
+## Deployment
+
+This project is deployed using GitHub Pages. You can view the live application [here](https://lushegtech.github.io/vanilla-ticktacktoe/).
+
+### Steps to Deploy on GitHub Pages
+
+1. Push your code to GitHub
+2. Go to the repository settings
+3. In the "Pages" section, select the branch (main) and root directory
+4. Save the settings and wait for deployment
+5. Your site will be available at `https://lushegtech.github.io/vanilla-ticktacktoe/`
+
+## Contact
+
+**My Name** - Elijah Adebayo
+**Email** - olusegunvicky121@gmail.com
+**Lushegtech** - [GitHub Profile](https://github.com/Lushegtech)
+
+Project Link: [https://github.com/Lushegtech/vanilla-ticktacktoe](https://github.com/Lushegtech/vanilla-ticktacktoe)
+
+Live Demo: [https://lushegtech.github.io/vanilla-ticktacktoe/](https://lushegtech.github.io/vanilla-ticktacktoe/)
 
 ---
 
-Built with vanilla web technologies. No frameworks, no build process, just simple code that works.
+*Built with vanilla web technologies. No frameworks, no build process, just clean code that works.*
