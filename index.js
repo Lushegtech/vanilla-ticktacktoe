@@ -66,7 +66,12 @@ function createBurst(){
 function resetBoard(nextRound=false){
   board = Array(9).fill(null);
   xIsNext = true; history = []; celebrating=false; clearWinline();
-  cells.forEach(c=>{ c.innerHTML=''; });
+  cells.forEach((c, i)=>{ 
+    c.innerHTML=''; 
+    c.setAttribute('aria-label', `Cell ${i+1}, empty`);
+    c.removeAttribute('data-player');
+    c.disabled = false;
+  });
   nextBtn.style.display = 'none'; setStatus("X's turn"); roundEl.textContent = round;
 }
 
@@ -79,7 +84,13 @@ function endRound(winner){
 function placeAt(i){
   if(board[i] || celebrating) return;
   const curr = xIsNext ? 'X' : 'O';
-  board[i]=curr; cells[i].innerHTML = markHTML(curr); history.push(i); xIsNext=!xIsNext;
+  board[i]=curr; 
+  cells[i].innerHTML = markHTML(curr); 
+  cells[i].setAttribute('aria-label', `Cell ${i+1}, ${curr}`);
+  cells[i].setAttribute('data-player', curr);
+  cells[i].disabled = true;
+  history.push(i); 
+  xIsNext=!xIsNext;
   announce(`${curr} placed at cell ${i+1}.`);
 
   const win = getWinner(board);
@@ -99,8 +110,15 @@ function placeAt(i){
 function undo(){
   if(!history.length || celebrating) return;
   const last = history.pop();
-  board[last]=null; cells[last].innerHTML=''; xIsNext=!xIsNext; setStatus(xIsNext?"X's turn":"O's turn");
-  cells[last].focus(); focusIndex=last;
+  board[last]=null; 
+  cells[last].innerHTML=''; 
+  cells[last].setAttribute('aria-label', `Cell ${last+1}, empty`);
+  cells[last].removeAttribute('data-player');
+  cells[last].disabled = false;
+  xIsNext=!xIsNext; 
+  setStatus(xIsNext?"X's turn":"O's turn");
+  cells[last].focus(); 
+  focusIndex=last;
 }
 
 modeSel.addEventListener('change', e=>{ mode = e.target.value; resetBoard(false); });

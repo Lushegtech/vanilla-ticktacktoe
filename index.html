@@ -1,55 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tic Tac Toe</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div class="container">
-    <h1>Tic Tac Toe</h1>
+  <main class="container">
+    <header class="site-header">
+      <h1>Tic Tac Toe</h1>
+      <p class="tagline">Classic strategy game for two players</p>
+    </header>
     
-    <div class="controls">
-      <label>Mode: 
-        <select id="mode">
+    <section class="controls" aria-label="Game controls">
+      <div class="control-group">
+        <label for="mode">Game mode</label>
+        <select id="mode" aria-describedby="mode-help">
           <option value="cpu">vs Computer</option>
           <option value="friend">vs Friend</option>
         </select>
-      </label>
-      <button id="undo">Undo</button>
-      <button id="reset">Reset</button>
-    </div>
+        <span id="mode-help" class="help-text">Choose your opponent</span>
+      </div>
+      <div class="button-group">
+        <button type="button" id="undo" aria-label="Undo last move">Undo</button>
+        <button type="button" id="reset" aria-label="Reset game">Reset</button>
+      </div>
+    </section>
 
-    <div class="game">
-      <div class="status">
-        <span id="status">X's turn</span> | Round <span id="round">1</span>
+    <section class="game-area">
+      <div class="game">
+        <div class="status" role="status" aria-live="polite">
+          <span id="status">X's turn</span>
+          <span class="round-info">Round <span id="round">1</span></span>
+        </div>
+        
+        <div id="board" class="board" role="grid" aria-label="Tic tac toe game board">
+          <button type="button" class="cell" data-cell="0" aria-label="Cell 1, empty" role="gridcell"></button>
+          <button type="button" class="cell" data-cell="1" aria-label="Cell 2, empty" role="gridcell"></button>
+          <button type="button" class="cell" data-cell="2" aria-label="Cell 3, empty" role="gridcell"></button>
+          <button type="button" class="cell" data-cell="3" aria-label="Cell 4, empty" role="gridcell"></button>
+          <button type="button" class="cell" data-cell="4" aria-label="Cell 5, empty" role="gridcell"></button>
+          <button type="button" class="cell" data-cell="5" aria-label="Cell 6, empty" role="gridcell"></button>
+          <button type="button" class="cell" data-cell="6" aria-label="Cell 7, empty" role="gridcell"></button>
+          <button type="button" class="cell" data-cell="7" aria-label="Cell 8, empty" role="gridcell"></button>
+          <button type="button" class="cell" data-cell="8" aria-label="Cell 9, empty" role="gridcell"></button>
+        </div>
+        
+        <button type="button" id="next" class="primary-button" style="display:none">Start next round</button>
       </div>
       
-      <div id="board" class="board">
-        <div class="cell" data-cell="0"></div>
-        <div class="cell" data-cell="1"></div>
-        <div class="cell" data-cell="2"></div>
-        <div class="cell" data-cell="3"></div>
-        <div class="cell" data-cell="4"></div>
-        <div class="cell" data-cell="5"></div>
-        <div class="cell" data-cell="6"></div>
-        <div class="cell" data-cell="7"></div>
-        <div class="cell" data-cell="8"></div>
-      </div>
-      
-      <button id="next" style="display:none">Next Round</button>
-    </div>
-    
-    <div class="sidebar">
-      <h3>Score</h3>
-      <table>
-        <tr><td>X:</td><td id="scoreX">0</td></tr>
-        <tr><td>O:</td><td id="scoreO">0</td></tr>
-        <tr><td>Draws:</td><td id="scoreD">0</td></tr>
-      </table>
-    </div>
-  </div>
+      <aside class="sidebar" aria-label="Score tracking">
+        <h2>Score</h2>
+        <dl class="score-list">
+          <div class="score-item">
+            <dt>X wins</dt>
+            <dd id="scoreX">0</dd>
+          </div>
+          <div class="score-item">
+            <dt>O wins</dt>
+            <dd id="scoreO">0</dd>
+          </div>
+          <div class="score-item">
+            <dt>Draws</dt>
+            <dd id="scoreD">0</dd>
+          </div>
+        </dl>
+      </aside>
+    </section>
+  </main>
   
   <script src="index.js"></script>
 </body>

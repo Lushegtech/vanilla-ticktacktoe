@@ -1,188 +1,282 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #f8f8f8;
-  color: #333;
-  margin: 0;
-  padding: 25px;
+/* Reset */
+* {
+  box-sizing: border-box;
 }
 
+/* Base styles - system font, comfortable line-height */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #1a1a1a;
+  background: #ffffff;
+  margin: 0;
+  padding: 24px;
+}
+
+/* Typography hierarchy via size + spacing */
+h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 8px 0;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 16px 0;
+}
+
+.tagline {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Layout - generous whitespace, 8/16/24px scale */
 .container {
-  max-width: 680px;
+  max-width: 720px;
   margin: 0 auto;
   background: white;
-  border: 1px solid #ddd;
-  padding: 30px;
+  border: 1px solid #d1d5db;
+  padding: 32px;
 }
 
-h1 {
-  margin: 0 0 25px 0;
-  font-size: 28px;
-  font-weight: bold;
-  color: #222;
+.site-header {
+  text-align: center;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 32px;
 }
 
-h3 {
-  margin: 0 0 12px 0;
-  font-size: 16px;
-  font-weight: bold;
-  color: #444;
-}
-
+/* Controls - neutral grays, 1px borders */
 .controls {
-  margin-bottom: 28px;
-  padding: 15px;
-  background: #f5f5f5;
-  border: 1px solid #ccc;
+  margin-bottom: 32px;
+  padding: 24px;
+  background: #f9fafb;
+  border: 1px solid #d1d5db;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
 }
 
-.controls label {
-  margin-right: 18px;
-  font-weight: bold;
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-select, button {
-  font-family: inherit;
-  font-size: 13px;
+.control-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
 }
 
+.help-text {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.button-group {
+  display: flex;
+  gap: 8px;
+}
+
+/* Forms - stacked, clear labels */
 select {
-  margin-left: 6px;
-  padding: 4px 8px;
-  border: 1px solid #999;
+  font-family: inherit;
+  font-size: 14px;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
   background: white;
+  color: #374151;
+  min-width: 140px;
 }
 
+select:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+/* Buttons - solid primary + quiet secondary */
 button {
-  padding: 6px 12px;
-  margin-left: 10px;
-  border: 1px solid #999;
-  background: #f0f0f0;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border: 1px solid #d1d5db;
+  background: white;
+  color: #374151;
   cursor: pointer;
 }
 
 button:hover {
-  background: #e8e8e8;
+  background: #f9fafb;
 }
 
-.game {
-  float: left;
-  width: 380px;
+button:focus {
+  outline: none;
+  border-color: #2563eb;
 }
 
+.primary-button {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+.primary-button:hover {
+  background: #1d4ed8;
+}
+
+/* Game layout - epicenter design */
+.game-area {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 32px;
+  align-items: start;
+}
+
+/* Game status */
 .status {
-  margin-bottom: 18px;
-  font-weight: bold;
-  font-size: 15px;
-  padding: 8px;
-  background: #efefef;
-  border: 1px solid #bbb;
+  margin-bottom: 24px;
+  padding: 16px;
+  background: #f9fafb;
+  border: 1px solid #d1d5db;
   text-align: center;
+  font-weight: 500;
+  color: #374151;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
+.round-info {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Game board - the epicenter */
 .board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 3px;
+  gap: 1px;
   width: 300px;
   height: 300px;
-  background: #ddd;
-  padding: 5px;
-  margin: 0 auto 20px;
-  border: 2px solid #999;
+  margin: 0 auto 24px;
+  background: #d1d5db;
+  border: 1px solid #9ca3af;
 }
 
 .cell {
   background: white;
-  border: 1px solid #888;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 42px;
-  font-weight: bold;
+  font-weight: 600;
+  color: #1a1a1a;
   cursor: pointer;
 }
 
-.cell:hover {
-  background: #f9f9f9;
+.cell:hover:not(:disabled) {
+  background: #f9fafb;
+}
+
+.cell:focus {
+  outline: none;
+  background: #f3f4f6;
+  border: 2px solid #2563eb;
+}
+
+.cell:disabled {
+  cursor: not-allowed;
 }
 
 .cell.win {
-  background: #ffeeaa;
+  background: #fef3c7;
 }
 
+/* Single accent color for marks */
+.cell[data-player="X"] {
+  color: #2563eb;
+}
+
+.cell[data-player="O"] {
+  color: #2563eb;
+}
+
+/* Sidebar */
 .sidebar {
-  float: right;
-  width: 200px;
-  margin-left: 25px;
-  background: #f8f8f8;
-  padding: 18px;
-  border: 1px solid #ccc;
+  padding: 24px;
+  background: #f9fafb;
+  border: 1px solid #d1d5db;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: white;
-  border: 1px solid #aaa;
+.score-list {
+  margin: 0;
 }
 
-td {
-  padding: 8px 10px;
-  border-bottom: 1px solid #ddd;
+.score-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #d1d5db;
 }
 
-td:first-child {
-  font-weight: bold;
-  width: 50px;
+.score-item:last-child {
+  border-bottom: none;
 }
 
-td:last-child {
-  font-weight: bold;
-  text-align: right;
+.score-item dt {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  margin: 0;
 }
 
-.container:after {
-  content: "";
-  display: table;
-  clear: both;
+.score-item dd {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
 }
 
-#next {
-  background: #0066cc;
-  color: white;
-  border-color: #0066cc;
-  font-weight: bold;
-}
-
-#next:hover {
-  background: #0052a3;
-}
-
-@media (max-width: 650px) {
+/* Mobile-first responsive */
+@media (max-width: 640px) {
   body {
-    padding: 15px;
+    padding: 16px;
   }
   
   .container {
-    padding: 20px;
+    padding: 24px;
   }
   
-  .game, .sidebar {
-    float: none;
-    width: 100%;
-    margin-left: 0;
+  .controls {
+    flex-direction: column;
+    gap: 16px;
   }
   
-  .sidebar {
-    margin-top: 25px;
+  .game-area {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
   
   .board {
-    width: 250px;
-    height: 250px;
+    width: 260px;
+    height: 260px;
   }
   
   .cell {
-    font-size: 32px;
+    font-size: 36px;
+  }
+  
+  .status {
+    flex-direction: column;
+    gap: 8px;
   }
 }
